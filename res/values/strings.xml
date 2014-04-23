@@ -4,5 +4,40 @@
     <string name="app_name">CS Lab Helper</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="name">Name:</string>
+    <string name="insertName">Insert Name Here</string>
+    <string name="okay">Okay</string>
+    <string name="class">Class:</string>
+    <string name="day">Day:</string>
+    <string name="time">Time:</string>
+    <string name="viewAll">View All</string>
+    <string-array name="classArray">
+        <item >CS 180</item>
+        <item >CS 182</item>
+        <item >CS 240</item>
+        <item >CS 250</item>
+        <item >CS 251</item>
+        <item >CS 252</item>
+    </string-array>
+    <string-array name="timeArray">
+        <item >7:30</item>
+        <item >8:30</item>
+        <item >9:30</item>
+        <item >10:30</item>
+        <item >11:30</item>
+        <item >12:30</item>
+        <item >13:30</item>
+        <item >14:30</item>
+        <item >15:30</item>
+        <item >16:30</item>
+        <item />
+    </string-array>
+    <string-array name="dayArray">
+        <item >Monday</item>
+        <item >Tuesday</item>
+        <item >Wednesday</item>
+        <item >Thursday</item>
+        <item >Friday</item>
+    </string-array>
 
 </resources>

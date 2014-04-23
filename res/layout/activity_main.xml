@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/csLabHelper"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -8,9 +9,115 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <TextView
+    <EditText
+        android:id="@+id/nameText"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:inputType="text|none"
+        android:text="@string/name"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/nameTextBox"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/nameText"
+        android:layout_alignBottom="@+id/nameText"
+        android:layout_marginLeft="29dp"
+        android:layout_toRightOf="@+id/nameText"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/insertName"
+        android:textSize="12sp" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/classText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignLeft="@+id/nameText"
+        android:layout_below="@+id/nameTextBox"
+        android:ems="10"
+        android:inputType="none"
+        android:text="@string/class"
+        android:textSize="12sp"
+        android:width="60dp" />
+
+    <Spinner
+        android:id="@+id/classSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nameTextBox"
+        android:layout_alignTop="@+id/classText"
+        android:layout_below="@id/nameTextBox"
+        android:entries="@array/classArray"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/timeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/dayText"
+        android:layout_below="@+id/classSpinner"
+        android:ems="10"
+        android:inputType="none"
+        android:text="@string/time"
+        android:textSize="12sp"
+        android:width="60sp" />
+
+    <Spinner
+        android:id="@+id/timeSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/classSpinner"
+        android:layout_alignTop="@+id/timeText"
+        android:entries="@array/timeArray"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/dayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/classText"
+        android:layout_below="@+id/timeSpinner"
+        android:ems="10"
+        android:inputType="none"
+        android:text="@string/day"
+        android:textSize="12sp"
+        android:width="60sp" />
+
+    <Spinner
+        android:id="@+id/daySpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/timeSpinner"
+        android:layout_below="@+id/timeSpinner"
+        android:entries="@array/dayArray"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/sendButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignRight="@+id/daySpinner"
+        android:layout_below="@+id/daySpinner"
+        android:text="@string/okay"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/viewAllButon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/sendButton"
+        android:layout_alignBottom="@+id/sendButton"
+        android:layout_toLeftOf="@+id/sendButton"
+        android:minHeight="40dp"
+        android:text="@string/viewAll"
+        android:textSize="12sp" />
 
 </RelativeLayout>
