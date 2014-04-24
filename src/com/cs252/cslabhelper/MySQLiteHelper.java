@@ -9,11 +9,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	
 	  private static final String DATABASE_NAME = "game.db";
 	  private static final int DATABASE_VERSION = 1;
-
-	  public static final String TABLE_B146 = "b146";
-	  public static final String TABLE_B148 = "b148";
-	  public static final String TABLE_B158 = "b158";
-	  public static final String TABLE_B160 = "b160";
+	  
+	  public static final String TABLE_CLASSES = "classes";
 	  
 	  //Question Data Fields
 	  public static final String CLASS_ID = "ID";
@@ -21,38 +18,16 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	  public static final String CLASS_DAY = "DAY";
 	  public static final String CLASS_START_TIME = "START_TIME";
 	  public static final String CLASS_END_TIME = "END_TIME";
+	  public static final String CLASS_LAB = "LAB";
 	  
-	  public static final String B146_CREATE = "create table "
-			  + TABLE_B146 + "(" + CLASS_ID
+	  public static final String CLASSES_CREATE = "create table "
+			  + TABLE_CLASSES + "(" + CLASS_ID
 			  + " integer primary key autoincrement, " + CLASS_NAME
 			  + " text not null, " + CLASS_DAY 
 			  + " text not null, " + CLASS_START_TIME
 			  + " integer, " + CLASS_END_TIME
-			  + " integer);";
-	  
-	  public static final String B148_CREATE = "create table "
-			  + TABLE_B148 + "(" + CLASS_ID
-			  + " integer primary key autoincrement, " + CLASS_NAME
-			  + " text not null, " + CLASS_DAY 
-			  + " text not null, " + CLASS_START_TIME
-			  + " integer, " + CLASS_END_TIME
-			  + " integer);";
-	  
-	  public static final String B158_CREATE = "create table "
-			  + TABLE_B158 + "(" + CLASS_ID
-			  + " integer primary key autoincrement, " + CLASS_NAME
-			  + " text not null, " + CLASS_DAY 
-			  + " text not null, " + CLASS_START_TIME
-			  + " integer, " + CLASS_END_TIME
-			  + " integer);";
-	  
-	  public static final String B160_CREATE = "create table "
-			  + TABLE_B160 + "(" + CLASS_ID
-			  + " integer primary key autoincrement, " + CLASS_NAME
-			  + " text not null, " + CLASS_DAY 
-			  + " text not null, " + CLASS_START_TIME
-			  + " integer, " + CLASS_END_TIME
-			  + " integer);";
+			  + " integer, " + CLASS_LAB
+			  + " text not null);";
 	 
 
 	  public MySQLiteHelper(Context context) {
@@ -61,10 +36,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
 	  @Override
 	  public void onCreate(SQLiteDatabase database) {
-		  database.execSQL(B146_CREATE);
-		  database.execSQL(B148_CREATE);
-		  database.execSQL(B158_CREATE);
-		  database.execSQL(B160_CREATE);
+		  database.execSQL(CLASSES_CREATE);
 		  Log.d("onCreate", "Database created");
 	  }
 
@@ -73,7 +45,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	    Log.w(MySQLiteHelper.class.getName(),
 	        "Upgrading database from version " + oldVersion + " to "
 	            + newVersion + ", which will destroy all old data");
-	    db.execSQL("DROP TABLE IF EXISTS " + TABLE_B146);
+	    db.execSQL("DROP TABLE IF EXISTS " + TABLE_CLASSES);
 	    onCreate(db);
 	  }
 }
