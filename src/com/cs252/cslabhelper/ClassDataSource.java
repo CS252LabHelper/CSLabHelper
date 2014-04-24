@@ -22,8 +22,8 @@ public class ClassDataSource {
 
   private Class classesB146[];
   private Class classesB148[];
-  private Class classesB156[];
   private Class classesB158[];
+  private Class classesB160[];
   private SQLiteDatabase database;
   private MySQLiteHelper dbHelper;
   private  String[] allColumns = { MySQLiteHelper.CLASS_ID,
@@ -64,28 +64,28 @@ public class ClassDataSource {
   }
 
   public Class retrieveClass(){
-      Cursor cursor  = database.rawQuery("SELECT * FROM "+  MySQLiteHelper.TABLE_QUESTIONS + 
+      Cursor cursor  = database.rawQuery("SELECT * FROM "+  MySQLiteHelper.TABLE_B146 + 
     		  " WHERE USED = 0 ORDER BY RANDOM()", null);
       cursor.moveToFirst();
-      Question q = cursorToQuestion(cursor);
+      Class c = cursorToClass(cursor);
       //database.execSQL("UPDATE " + MySQLiteHelper.TABLE_QUESTIONS + " SET USED = 1 WHERE ID = " + q.id);            
-      return q;       
+      return c;       
  }
 			
-  public List<Question> getAllQuestions() {
-    List<Question> questions = new ArrayList<Question>();
+  public List<Class> getAllQuestions() {
+    List<Class> classes = new ArrayList<Class>();
 
-    Cursor cursor = database.query(MySQLiteHelper.TABLE_QUESTIONS,
+    Cursor cursor = database.query(MySQLiteHelper.TABLE_B146,
         allColumns, null, null, null, null, null);
     cursor.moveToFirst();
     while (!cursor.isAfterLast()) {
-      Question question = cursorToQuestion(cursor);
-      questions.add(question);
+      Class c = cursorToClass(cursor);
+      classes.add(c);
       cursor.moveToNext();
     }
     // make sure to close the cursor
     cursor.close();
-    return questions;
+    return classes;
   }
   
   private Class cursorToClass(Cursor cursor) {
@@ -104,8 +104,8 @@ public void insertAllIntoTable(ClassDataSource ds){
 	int numClasses = 20;
     classesB146 = new Class[numClasses];
     classesB148 = new Class[numClasses];
-    classesB156 = new Class[numClasses];
     classesB158 = new Class[numClasses];
+    classesB160 = new Class[numClasses];
 
     for(int i=0;i<classesB146.length;i++){
     	classesB146[i] = new Class();
@@ -115,12 +115,12 @@ public void insertAllIntoTable(ClassDataSource ds){
     	classesB148[i] = new Class();
     }
     
-    for(int i=0;i<classesB156.length;i++){
-    	classesB156[i] = new Class();
-    }
-    
     for(int i=0;i<classesB158.length;i++){
     	classesB158[i] = new Class();
+    }
+    
+    for(int i=0;i<classesB160.length;i++){
+    	classesB160[i] = new Class();
     }
     
     //B148
@@ -214,6 +214,7 @@ public void insertAllIntoTable(ClassDataSource ds){
     classesB148[17].start_time = 1530;
     classesB148[17].end_time = 1720;
     
+    //B146
     classesB146[0].name = "CS426";
     classesB146[0].day = "Monday";
     classesB146[0].start_time = 1530;
@@ -283,6 +284,78 @@ public void insertAllIntoTable(ClassDataSource ds){
     classesB146[13].day = "Friday";
     classesB146[13].start_time = 1530;
     classesB146[13].end_time = 1720;
+    
+    //B158
+    classesB158[0].name = "CS240";
+    classesB158[0].day = "Monday";
+    classesB158[0].start_time = 1600;
+    classesB158[0].end_time = 1800;
+    
+    classesB158[1].name = "CS240";
+    classesB158[1].day = "Tuesday";
+    classesB158[1].start_time = 1330;
+    classesB158[1].end_time = 1520;
+    
+    classesB158[2].name = "CS426";
+    classesB158[2].day = "Wednesday";
+    classesB158[2].start_time = 930;
+    classesB158[2].end_time = 1120;
+    
+    classesB158[3].name = "CS252";
+    classesB158[3].day = "Wednesday";
+    classesB158[3].start_time = 1530;
+    classesB158[3].end_time = 1720;
+    
+    classesB158[4].name = "CS426 PSO";
+    classesB158[4].day = "Thursday";
+    classesB158[4].start_time = 915;
+    classesB158[4].end_time = 1115;
+    
+    classesB158[5].name = "CS180";
+    classesB158[5].day = "Thursday";
+    classesB158[5].start_time = 1130;
+    classesB158[5].end_time = 1320;
+    
+    classesB158[6].name = "CS252";
+    classesB158[6].day = "Thursday";
+    classesB158[6].start_time = 1330;
+    classesB158[6].end_time = 1520;
+    
+    classesB158[7].name = "CS240";
+    classesB158[7].day = "Friday";
+    classesB158[7].start_time = 930;
+    classesB158[7].end_time = 1120;
+    
+    classesB158[8].name = "CS426";
+    classesB158[8].day = "Friday";
+    classesB158[8].start_time = 1130;
+    classesB158[8].end_time = 1320;
+    
+    classesB158[9].name = "CS180";
+    classesB158[9].day = "Friday";
+    classesB158[9].start_time = 1330;
+    classesB158[9].end_time = 1520;
+    
+    classesB158[10].name = "CS240";
+    classesB158[10].day = "Friday";
+    classesB158[10].start_time = 1530;
+    classesB158[10].end_time = 1720;
+    
+    classesB160[0].name = "CS250";
+    classesB160[0].day = "Tuesday";
+    classesB160[0].start_time = 1530;
+    classesB160[0].end_time = 1720;
+    
+    classesB160[1].name = "CS250";
+    classesB160[1].day = "Wednesday";
+    classesB160[1].start_time = 1530;
+    classesB160[1].end_time = 1720;
+    
+    classesB160[2].name = "CS250";
+    classesB160[2].day = "Friday";
+    classesB160[2].start_time = 1530;
+    classesB160[2].end_time = 1720;
+   
 }
 
 public boolean exists(){
