@@ -72,16 +72,24 @@ public class ClassDataSource {
       return c;       
  }
 			
-  public List<Class> getAllQuestions() {
-    List<Class> classes = new ArrayList<Class>();
-
-    Cursor cursor = database.query(MySQLiteHelper.TABLE_B146,
+  public Class[] getAllClasses() {
+	  
+    int i = 0;
+    Cursor cursor = database.query(MySQLiteHelper.TABLE_B146 + ", " 
+    		+ MySQLiteHelper.TABLE_B148 + ", " 
+    		+ MySQLiteHelper.TABLE_B158 + ", " 
+    		+ MySQLiteHelper.TABLE_B160,
         allColumns, null, null, null, null, null);
+    
+    int size = cursor.getCount();
+    Class[] classes = new Class[size];
     cursor.moveToFirst();
+    
     while (!cursor.isAfterLast()) {
-      Class c = cursorToClass(cursor);
-      classes.add(c);
+      classes[i] = new Class();
+      classes[i] = cursorToClass(cursor);
       cursor.moveToNext();
+      i++;
     }
     // make sure to close the cursor
     cursor.close();

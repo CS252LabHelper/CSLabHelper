@@ -12,8 +12,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
 	  public static final String TABLE_B146 = "b146";
 	  public static final String TABLE_B148 = "b148";
-	  public static final String TABLE_B156 = "b156";
 	  public static final String TABLE_B158 = "b158";
+	  public static final String TABLE_B160 = "b160";
 	  
 	  //Question Data Fields
 	  public static final String CLASS_ID = "ID";
@@ -38,16 +38,16 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 			  + " integer, " + CLASS_END_TIME
 			  + " integer);";
 	  
-	  public static final String B156_CREATE = "create table "
-			  + TABLE_B156 + "(" + CLASS_ID
+	  public static final String B158_CREATE = "create table "
+			  + TABLE_B158 + "(" + CLASS_ID
 			  + " integer primary key autoincrement, " + CLASS_NAME
 			  + " text not null, " + CLASS_DAY 
 			  + " text not null, " + CLASS_START_TIME
 			  + " integer, " + CLASS_END_TIME
 			  + " integer);";
 	  
-	  public static final String B158_CREATE = "create table "
-			  + TABLE_B158 + "(" + CLASS_ID
+	  public static final String B160_CREATE = "create table "
+			  + TABLE_B160 + "(" + CLASS_ID
 			  + " integer primary key autoincrement, " + CLASS_NAME
 			  + " text not null, " + CLASS_DAY 
 			  + " text not null, " + CLASS_START_TIME
@@ -63,8 +63,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	  public void onCreate(SQLiteDatabase database) {
 		  database.execSQL(B146_CREATE);
 		  database.execSQL(B148_CREATE);
-		  database.execSQL(B156_CREATE);
 		  database.execSQL(B158_CREATE);
+		  database.execSQL(B160_CREATE);
 		  Log.d("onCreate", "Database created");
 	  }
 
