@@ -1,6 +1,4 @@
 package com.cs252.cslabhelper;
-import java.util.ArrayList;
-import java.util.List;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -21,12 +19,11 @@ class Class {
 
 public class ClassDataSource {
 
-  
-  private Class classes[];
+
  
   private SQLiteDatabase database;
   private MySQLiteHelper dbHelper;
-  private  String[] allColumns = { MySQLiteHelper.CLASS_ID,
+  private  String[] classColumns = { MySQLiteHelper.CLASS_ID,
       MySQLiteHelper.CLASS_NAME , MySQLiteHelper.CLASS_DAY, MySQLiteHelper.CLASS_START_TIME, 
       MySQLiteHelper.CLASS_END_TIME, MySQLiteHelper.CLASS_LAB}; 
 
@@ -55,7 +52,7 @@ public class ClassDataSource {
         values);
     Log.d("insertId", String.valueOf(insertId));
     Cursor cursor = database.query(table_name,
-        allColumns, MySQLiteHelper.CLASS_ID + " = " + insertId, null,
+        classColumns, MySQLiteHelper.CLASS_ID + " = " + insertId, null,
         null, null, null);
     //Cursor cursor = database.rawQuery("SELECT * FROM " + MySQLiteHelper.TABLE_QUESTIONS + " ", null);
     cursor.moveToFirst();
@@ -65,20 +62,33 @@ public class ClassDataSource {
     return newClass;
   }
 
-  public Class retrieveClass(){
-      Cursor cursor  = database.rawQuery("SELECT * FROM "+  MySQLiteHelper.TABLE_CLASSES + 
-    		  " WHERE USED = 0 ORDER BY RANDOM()", null);
-      cursor.moveToFirst();
-      Class c = cursorToClass(cursor);
-      //database.execSQL("UPDATE " + MySQLiteHelper.TABLE_QUESTIONS + " SET USED = 1 WHERE ID = " + q.id);            
-      return c;       
+  public Class[] retrieveClasses(String class_name, String day, int time){
+	  
+	  int i = 0;
+	  Cursor cursor = database.query(MySQLiteHelper.TABLE_CLASSES,
+		        classColumns, "NAME = " + class_name + " AND DAY = " + day + " AND " + time + " BETWEEN START_TIME AND END_TIME", null, null, null, null);
+	  
+	  int size = cursor.getCount();
+	  Class[] classes = new Class[size];
+	  cursor.moveToFirst();
+	    
+	  while (!cursor.isAfterLast()) {
+	    classes[i] = new Class();
+	    classes[i] = cursorToClass(cursor);
+	    cursor.moveToNext();
+	    i++;
+	  }
+	  // make sure to close the cursor
+	  cursor.close();
+	  
+	  return classes;
  }
 			
   public Class[] getAllClasses() {
 	  
     int i = 0;
     Cursor cursor = database.query(MySQLiteHelper.TABLE_CLASSES,
-        allColumns, null, null, null, null, null);
+        classColumns, null, null, null, null, null);
     
     int size = cursor.getCount();
     Class[] classes = new Class[size];

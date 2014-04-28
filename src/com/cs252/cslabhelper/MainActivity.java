@@ -41,7 +41,9 @@ public class MainActivity extends Activity {
 	 
 	public void testDatabase(View view){
 		Class classes[] = datasource.getAllClasses();
+		//Class classes2[] = datasource.retrieveClasses("CS250", "Wednesday", 1630);
 		Log.d("testDatabase", "Size of array: "+String.valueOf(classes.length));
+		//Log.d("testDatabase", "Retrieved CS250 on Wednesday at 1630: " + String.valueOf(classes2.length));
 	}
 }
 
