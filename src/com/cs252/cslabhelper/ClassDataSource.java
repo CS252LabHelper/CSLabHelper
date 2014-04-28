@@ -66,7 +66,7 @@ public class ClassDataSource {
 	  
 	  int i = 0;
 	  Cursor cursor = database.query(MySQLiteHelper.TABLE_CLASSES,
-		        classColumns, "NAME = " + class_name + " AND DAY = " + day + " AND " + time + " BETWEEN START_TIME AND END_TIME", null, null, null, null);
+		        classColumns, "NAME = '" + class_name + "' AND DAY = '" + day + "' AND '" + time + "' BETWEEN START_TIME AND END_TIME", null, null, null, null);
 	  
 	  int size = cursor.getCount();
 	  Class[] classes = new Class[size];
