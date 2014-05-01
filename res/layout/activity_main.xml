@@ -107,7 +107,7 @@
         android:layout_alignRight="@+id/daySpinner"
         android:layout_below="@+id/daySpinner"
         android:text="@string/okay"
-        android:onClick="addSendListener"
+        android:onClick="startList"
         android:textSize="12sp" />
 
     <Button
