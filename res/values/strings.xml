@@ -39,5 +39,6 @@
         <item >Thursday</item>
         <item >Friday</item>
     </string-array>
+    <string name="title_activity_list_activity">MyListActivity</string>
 
 </resources>

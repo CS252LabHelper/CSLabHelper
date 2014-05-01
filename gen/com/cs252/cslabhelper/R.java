@@ -58,6 +58,7 @@ public final class R {
         public static final int name=0x7f050003;
         public static final int okay=0x7f050005;
         public static final int time=0x7f050008;
+        public static final int title_activity_list_activity=0x7f05000a;
         public static final int viewAll=0x7f050009;
     }
     public static final class style {

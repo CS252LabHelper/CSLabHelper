@@ -38,6 +38,11 @@ public class MainActivity extends Activity {
 		 	datasource.close();
 		    super.onPause();
 		 }
+	 
+	 public void startList(View view) {
+			Intent list = new Intent(this, MyListActivity.class);
+			startActivity(list);
+	 }
 	
 	public void testDatabase(View view){
 		Class classes[] = datasource.getAllClasses();
