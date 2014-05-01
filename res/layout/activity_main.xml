@@ -107,7 +107,7 @@
         android:layout_alignRight="@+id/daySpinner"
         android:layout_below="@+id/daySpinner"
         android:text="@string/okay"
-        android:onClick="startList"
+        android:onClick="okayPushed"
         android:textSize="12sp" />
 
     <Button
@@ -119,6 +119,7 @@
         android:layout_toLeftOf="@+id/sendButton"
         android:minHeight="40dp"
         android:text="@string/viewAll"
+        android:onClick="viewAllClicked"
         android:textSize="12sp" />
 
 </RelativeLayout>

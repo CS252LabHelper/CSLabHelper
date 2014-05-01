@@ -12,24 +12,24 @@
     <string name="time">Time:</string>
     <string name="viewAll">View All</string>
     <string-array name="classArray">
-        <item >CS 180</item>
-        <item >CS 182</item>
-        <item >CS 240</item>
-        <item >CS 250</item>
-        <item >CS 251</item>
-        <item >CS 252</item>
+        <item >CS180</item>
+        <item >CS182</item>
+        <item >CS240</item>
+        <item >CS250</item>
+        <item >CS251</item>
+        <item >CS252</item>
     </string-array>
     <string-array name="timeArray">
-        <item >7:30</item>
-        <item >8:30</item>
-        <item >9:30</item>
-        <item >10:30</item>
-        <item >11:30</item>
-        <item >12:30</item>
-        <item >13:30</item>
-        <item >14:30</item>
-        <item >15:30</item>
-        <item >16:30</item>
+        <item >7:30 a.m.</item>
+        <item >8:30 a.m.</item>
+        <item >9:30 a.m.</item>
+        <item >10:30 a.m.</item>
+        <item >11:30 a.m.</item>
+        <item >12:30 p.m.</item>
+        <item >1:30 p.m.</item>
+        <item >2:30 p.m.</item>
+        <item >3:30 p.m.</item>
+        <item >4:30 p.m.</item>
         <item />
     </string-array>
     <string-array name="dayArray">

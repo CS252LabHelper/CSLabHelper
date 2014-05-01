@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	public static ClassDataSource datasource;
@@ -43,7 +45,77 @@ public class MainActivity extends Activity {
 			Intent list = new Intent(this, MyListActivity.class);
 			startActivity(list);
 	 }
-	
+	 public void okayPushed(View view)
+		{
+			Class classes[];
+			TextView nameHelper = (TextView)findViewById(R.id.nameTextBox);
+			Spinner labHelper = (Spinner)findViewById(R.id.classSpinner);
+			Spinner timeHelper =(Spinner)findViewById(R.id.timeSpinner);
+			Spinner dayHelper = (Spinner)findViewById(R.id.daySpinner);
+			String nameString = nameHelper.getText().toString();
+			String labString = labHelper.getSelectedItem().toString();
+			String timeString = timeHelper.getSelectedItem().toString();
+			String dayString = dayHelper.getSelectedItem().toString();
+			int time = 0;
+			char temp = 0;
+			char real = 0;
+			String x;
+			temp = timeString.charAt(1);
+			if(temp == ':')
+			{
+				real = timeString.charAt(0);
+				time = Character.getNumericValue(real);
+				temp = timeString.charAt(2);
+				time *= 100;
+				if(temp == '3')
+					time += 30; 
+			}
+			else
+			{
+				x = timeString.substring(0,2);
+				time = Integer.parseInt(x);
+				temp = timeString.charAt(3);
+				time*=100;
+				if(temp == '3')
+					time+=30;
+			}
+			if(timeString.endsWith("p.m.") && time < 1200)
+			{
+				time += 1200;
+			}
+			
+			Log.d("Okay pushed:", "name is:" + nameString);
+			Log.d("Okay pushed:", "class is:" + labString);
+			Log.d("Okay pushed:", "day is:" + dayString);
+			Log.d("Okay pushed:", "time is:" + timeString);
+			Log.d("Okay pushed:", "time really is" + String.valueOf(time));
+			classes = datasource.retrieveClasses(labString, dayString, time);
+			int y = 0;
+			Log.d("Okay pushed:", "There are " + classes.length + " labs");
+			while(y < classes.length)
+			{
+				Log.d("Class #" + y, "Lab is: " + classes[y].lab);
+				Log.d("Class #" + y, "Day is: " + classes[y].day);
+				Log.d("Class #" + y, "Lab is: " + String.valueOf(classes[y].start_time));
+				y++;
+			}
+		}
+		
+		public void viewAllClicked(View view)
+		{
+			Class classes[];
+			TextView nameHelper = (TextView)findViewById(R.id.nameTextBox);
+			Spinner labHelper = (Spinner)findViewById(R.id.classSpinner);
+			//Spinner timeHelper =(Spinner)findViewById(R.id.timeSpinner);
+			Spinner dayHelper = (Spinner)findViewById(R.id.daySpinner);
+			String nameString = nameHelper.getText().toString();
+			String labString = labHelper.getSelectedItem().toString();
+			//String timeString = timeHelper.getSelectedItem().toString();
+			String dayString = dayHelper.getSelectedItem().toString();
+			int time = 0;
+			classes = datasource.retrieveClasses(labString, dayString, time);
+		}
+		
 	public void testDatabase(View view){
 		Class classes[] = datasource.getAllClasses();
 		Class classes2[] = datasource.retrieveClasses("CS250", "Wednesday", 1630);
