@@ -18,11 +18,18 @@ public class MyListActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
  
-        final List<String[]> classList = new LinkedList<String[]>();
-        classList.add(new String[] { "LWSN B146", "CS 180" });
-        classList.add(new String[] { "LWSN B148", "CS 240" });
-        classList.add(new String[] { "LWSN B158", "CS 252" });
+        Class list[] = MainActivity.classes;
         
+        final List<String[]> classList = new LinkedList<String[]>();
+        for(int i = 0; i < list.length; i++){
+        	String AmPm = " AM";
+        	int time = list[i].start_time;
+        	if(time > 1200){
+        		AmPm = " PM";
+        		time-=1200;
+        	}
+        	classList.add(new String[] {list[i].lab + ": " + list[i].name, list[i].day + " " + String.valueOf(time) + AmPm});
+        }
         setListAdapter(new ArrayAdapter<String[]>(
             this,
             android.R.layout.simple_list_item_2,
@@ -32,12 +39,8 @@ public class MyListActivity extends ListActivity {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
  
-                // Must always return just a View.
                 View view = super.getView(position, convertView, parent);
  
-                // If you look at the android.R.layout.simple_list_item_2 source, you'll see
-                // it's a TwoLineListItem with 2 TextViews - text1 and text2.
-                //TwoLineListItem listItem = (TwoLineListItem) view;
                 String[] entry = classList.get(position);
                 TextView text1 = (TextView) view.findViewById(android.R.id.text1);
                 TextView text2 = (TextView) view.findViewById(android.R.id.text2);
@@ -47,12 +50,11 @@ public class MyListActivity extends ListActivity {
             }
         });
     }
-}
 
 	
-/*	@Override
+@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
-		String item = (String) getListAdapter().getItem(position);
-		Toast.makeText(this,  item + " selected",  Toast.LENGTH_LONG).show();
+		String item[] = (String[]) getListAdapter().getItem(position);
+		Toast.makeText(this,  MainActivity.nameString + " is going to " + item[0] + ": " + item[1] + " selected",  Toast.LENGTH_LONG).show();
 	}
-}*/
+}

@@ -10,7 +10,12 @@ import android.view.View;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+
 public class MainActivity extends Activity {
+	
+	public static Class classes[];
+	public static String nameString;
+	
 	public static ClassDataSource datasource;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +52,11 @@ public class MainActivity extends Activity {
 	 }
 	 public void okayPushed(View view)
 		{
-			Class classes[];
 			TextView nameHelper = (TextView)findViewById(R.id.nameTextBox);
 			Spinner labHelper = (Spinner)findViewById(R.id.classSpinner);
 			Spinner timeHelper =(Spinner)findViewById(R.id.timeSpinner);
 			Spinner dayHelper = (Spinner)findViewById(R.id.daySpinner);
-			String nameString = nameHelper.getText().toString();
+			nameString = nameHelper.getText().toString();
 			String labString = labHelper.getSelectedItem().toString();
 			String timeString = timeHelper.getSelectedItem().toString();
 			String dayString = dayHelper.getSelectedItem().toString();
@@ -99,28 +103,29 @@ public class MainActivity extends Activity {
 				Log.d("Class #" + y, "Lab is: " + String.valueOf(classes[y].start_time));
 				y++;
 			}
+			startList(view);
 		}
 		
 		public void viewAllClicked(View view)
 		{
-			Class classes[];
 			TextView nameHelper = (TextView)findViewById(R.id.nameTextBox);
 			Spinner labHelper = (Spinner)findViewById(R.id.classSpinner);
 			//Spinner timeHelper =(Spinner)findViewById(R.id.timeSpinner);
 			Spinner dayHelper = (Spinner)findViewById(R.id.daySpinner);
-			String nameString = nameHelper.getText().toString();
+			nameString = nameHelper.getText().toString();
 			String labString = labHelper.getSelectedItem().toString();
 			//String timeString = timeHelper.getSelectedItem().toString();
 			String dayString = dayHelper.getSelectedItem().toString();
 			int time = 0;
-			classes = datasource.retrieveClasses(labString, dayString, time);
+			classes = datasource.getAllClasses();
+			startList(view);
 		}
 		
-	public void testDatabase(View view){
+	 /*void testDatabase(View view){
 		Class classes[] = datasource.getAllClasses();
 		Class classes2[] = datasource.retrieveClasses("CS250", "Wednesday", 1630);
 		Log.d("testDatabase", "Size of array: "+String.valueOf(classes.length));
 		Log.d("testDatabase", "Retrieved CS250 on Wednesday at 1630: " + String.valueOf(classes2.length));
-	}
+	}*/
 }
 

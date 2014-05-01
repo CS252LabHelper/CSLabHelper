@@ -30,7 +30,7 @@
         android:layout_toRightOf="@+id/nameText"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/insertName"
+        android:hint="@string/insertName"
         android:textSize="12sp" >
 
         <requestFocus />
