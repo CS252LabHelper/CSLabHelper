@@ -3,11 +3,8 @@ package com.cs252.cslabhelper;
 import java.util.LinkedList;
 import java.util.List;
 
-import edu.purdue.cs.cs180.channel.Channel;
-import edu.purdue.cs.cs180.channel.ChannelException;
-import edu.purdue.cs.cs180.channel.TCPChannel;
-
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,24 +49,18 @@ public class MyListActivity extends ListActivity {
         });
     }
 
-    public void sendToServer(String message){
-    	Channel channel = null;
-    	try {
-    		channel = new TCPChannel(host,port);
-		} catch (ChannelException e) {
-			e.printStackTrace();
-		}try {
-			channel.sendMessage(message);
-		} catch (ChannelException e) {
-			e.printStackTrace();
-		}
-    }
 	
 @Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		String item[] = (String[]) getListAdapter().getItem(position);
 		String message = "/add-" + item[1] + "-" + MainActivity.nameString + "-" + item[0] + "-";
 		new NetworkHandler().execute(message);
-		Toast.makeText(this,  message,  Toast.LENGTH_LONG).show();
+		Intent res = new Intent(this, ResultScreen.class);
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		startActivity(res);
 	}
 }

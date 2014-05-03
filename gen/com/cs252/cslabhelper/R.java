@@ -29,7 +29,7 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f09000b;
+        public static final int action_settings=0x7f09000d;
         public static final int classSpinner=0x7f090004;
         public static final int classText=0x7f090003;
         public static final int csLabHelper=0x7f090000;
@@ -37,13 +37,16 @@ public final class R {
         public static final int dayText=0x7f090006;
         public static final int nameText=0x7f090001;
         public static final int nameTextBox=0x7f090002;
+        public static final int resultView=0x7f09000b;
         public static final int sendButton=0x7f090009;
         public static final int timeSpinner=0x7f090007;
         public static final int timeText=0x7f090005;
+        public static final int titleView=0x7f09000c;
         public static final int viewAllButon=0x7f09000a;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
+        public static final int activity_result=0x7f030001;
     }
     public static final class menu {
         public static final int main=0x7f080000;
@@ -59,6 +62,7 @@ public final class R {
         public static final int okay=0x7f050005;
         public static final int time=0x7f050008;
         public static final int title_activity_list_activity=0x7f05000a;
+        public static final int title_activity_result=0x7f05000b;
         public static final int viewAll=0x7f050009;
     }
     public static final class style {

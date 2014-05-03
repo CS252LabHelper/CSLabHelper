@@ -40,5 +40,6 @@
         <item >Friday</item>
     </string-array>
     <string name="title_activity_list_activity">MyListActivity</string>
+    <string name="title_activity_result">ResultScreen</string>
 
 </resources>

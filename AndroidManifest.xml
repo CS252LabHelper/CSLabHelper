@@ -28,6 +28,10 @@
             android:name="com.cs252.cslabhelper.MyListActivity"
             android:label="@string/title_activity_list_activity" >
         </activity>
+        <activity
+            android:name="com.cs252.cslabhelper.ResultScreen"
+            android:label="@string/title_activity_result" >
+        </activity>
     </application>
 
 </manifest>

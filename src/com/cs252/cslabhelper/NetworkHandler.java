@@ -12,7 +12,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 public class NetworkHandler extends AsyncTask<String, Void, String>{
-
+	
+	public static StringBuffer response;
 	@Override
 	protected String doInBackground(String... params) {
 		String message = params[0];
@@ -62,7 +63,7 @@ public class NetworkHandler extends AsyncTask<String, Void, String>{
 			e.printStackTrace();
 		}
 		String inputLine;
-		StringBuffer response = new StringBuffer();
+		response = new StringBuffer();
  
 		try {
 			while ((inputLine = in.readLine()) != null) {
