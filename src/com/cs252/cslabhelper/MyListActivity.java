@@ -3,6 +3,10 @@ package com.cs252.cslabhelper;
 import java.util.LinkedList;
 import java.util.List;
 
+import edu.purdue.cs.cs180.channel.Channel;
+import edu.purdue.cs.cs180.channel.ChannelException;
+import edu.purdue.cs.cs180.channel.TCPChannel;
+
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MyListActivity extends ListActivity {
+	
+	String host = "http://data.cs.purdue.edu";
+	int port = 25000;
 	 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +29,7 @@ public class MyListActivity extends ListActivity {
         
         final List<String[]> classList = new LinkedList<String[]>();
         for(int i = 0; i < list.length; i++){
-        	String AmPm = " AM";
-        	int time = list[i].start_time;
-        	if(time > 1200){
-        		AmPm = " PM";
-        		time-=1200;
-        	}
-        	classList.add(new String[] {list[i].lab + ": " + list[i].name, list[i].day + " " + String.valueOf(time) + AmPm});
+        	classList.add(new String[] {list[i].name + "-" + list[i].lab, list[i].day + "-" + String.valueOf(list[i].start_time)});
         }
         setListAdapter(new ArrayAdapter<String[]>(
             this,
@@ -51,10 +52,24 @@ public class MyListActivity extends ListActivity {
         });
     }
 
+    public void sendToServer(String message){
+    	Channel channel = null;
+    	try {
+    		channel = new TCPChannel(host,port);
+		} catch (ChannelException e) {
+			e.printStackTrace();
+		}try {
+			channel.sendMessage(message);
+		} catch (ChannelException e) {
+			e.printStackTrace();
+		}
+    }
 	
 @Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		String item[] = (String[]) getListAdapter().getItem(position);
-		Toast.makeText(this,  MainActivity.nameString + " is going to " + item[0] + ": " + item[1] + " selected",  Toast.LENGTH_LONG).show();
+		String message = "/add-" + item[1] + "-" + MainActivity.nameString + "-" + item[0] + "-";
+		new NetworkHandler().execute(message);
+		Toast.makeText(this,  message,  Toast.LENGTH_LONG).show();
 	}
 }
