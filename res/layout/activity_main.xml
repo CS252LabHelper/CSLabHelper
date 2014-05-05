@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/classSpinner"
         android:layout_alignTop="@+id/timeView"
-        android:entries="@array/timeArray"
+        android:entries="@array/timeArray1"
         android:textSize="12sp" />
 
     <TextView
@@ -94,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/timeSpinner"
         android:layout_below="@+id/timeSpinner2"
-        android:entries="@array/dayArray"
+        android:entries="@array/dayArray1"
         android:textSize="12sp" />
 
     <Button

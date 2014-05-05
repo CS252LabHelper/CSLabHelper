@@ -19,6 +19,24 @@
         <item >CS251</item>
         <item >CS252</item>
     </string-array>
+     <string-array name="timeArray1">
+        <item >8:30 a.m.</item>
+        <item >9:30 a.m.</item>
+        <item >10:30 a.m.</item>
+        <item >11:30 a.m.</item>
+        <item >12:30 p.m.</item>
+        <item >1:30 p.m.</item>
+        <item >2:30 p.m.</item>
+        <item >3:30 p.m.</item>
+        <item >4:30 p.m.</item>  
+    </string-array>
+    <string-array name="dayArray1">
+        <item >Monday</item>
+        <item >Tuesday</item>
+        <item >Wednesday</item>
+        <item >Thursday</item>
+        <item >Friday</item>
+    </string-array>
     <string-array name="timeArray">
          <item >Any Time </item>
         <item >8:30 a.m.</item>
