@@ -15,6 +15,7 @@ public class MainActivity extends Activity {
 	
 	public static Class classes[];
 	public static String nameString;
+	public static String messagePrefix;
 	
 	public static ClassDataSource datasource;
 	@Override
@@ -107,6 +108,7 @@ public class MainActivity extends Activity {
 				Log.d("Class #" + y, "Lab is: " + String.valueOf(classes[y].start_time));
 				y++;
 			}
+			messagePrefix = "/add-";
 			startList(view);
 		}
 		
@@ -148,8 +150,16 @@ public class MainActivity extends Activity {
 				time += 1200;
 			}
 			
-	 		classes = datasource.viewClasses(dayString, time);
-	 		startList(view);
+			messagePrefix = "/see-";
+			String message = MainActivity.messagePrefix + dayString + "-" + time + "-";
+			new NetworkHandler().execute(message);
+			Intent res = new Intent(this, ResultScreen.class);
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			startActivity(res);
 	 	}
 	 	
 		public void viewAllClicked(View view)
@@ -164,6 +174,7 @@ public class MainActivity extends Activity {
 			String dayString = dayHelper.getSelectedItem().toString();
 			int time = 0;
 			classes = datasource.getAllClasses();
+			messagePrefix = "/add-";
 			startList(view);
 		}
 		
