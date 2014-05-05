@@ -65,6 +65,7 @@ public class MainActivity extends Activity {
 			char real = 0;
 			String x;
 			temp = timeString.charAt(1);
+			if(!timeString.contains("Any")){
 			if(temp == ':')
 			{
 				real = timeString.charAt(0);
@@ -86,6 +87,9 @@ public class MainActivity extends Activity {
 			if(timeString.endsWith("p.m.") && time < 1200)
 			{
 				time += 1200;
+			}
+			}else{
+				time = -1;
 			}
 			
 			Log.d("Okay pushed:", "name is:" + nameString);

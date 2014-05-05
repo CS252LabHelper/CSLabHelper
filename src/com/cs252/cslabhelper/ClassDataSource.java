@@ -83,10 +83,23 @@ public class ClassDataSource {
 	  return classes;
   }
   public Class[] retrieveClasses(String class_name, String day, int time){
-	  
+	  String daySelect = "";
+	  String timeSelect = "";
+	  String extradash = "";
 	  int i = 0;
+	  
+	  if(!day.contains("Any")){
+		  daySelect = "' AND DAY = '" + day.toString();
+	  }
+	  if(time > 0){
+		  timeSelect = "' AND '" + String.valueOf(time) + "' BETWEEN START_TIME AND END_TIME";
+  	  }else{
+  		  extradash = "'";
+  	  }
+	  
+	  
 	  Cursor cursor = database.query(MySQLiteHelper.TABLE_CLASSES,
-		        classColumns, "NAME = '" + class_name + "' AND DAY = '" + day + "' AND '" + time + "' BETWEEN START_TIME AND END_TIME", null, null, null, null);
+		        classColumns, "NAME = '" + class_name + daySelect + timeSelect + extradash , null, null, null, null);
 	  
 	  int size = cursor.getCount();
 	  Class[] classes = new Class[size];

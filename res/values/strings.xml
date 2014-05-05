@@ -20,7 +20,7 @@
         <item >CS252</item>
     </string-array>
     <string-array name="timeArray">
-        <item >7:30 a.m.</item>
+         <item >Any Time </item>
         <item >8:30 a.m.</item>
         <item >9:30 a.m.</item>
         <item >10:30 a.m.</item>
@@ -29,10 +29,10 @@
         <item >1:30 p.m.</item>
         <item >2:30 p.m.</item>
         <item >3:30 p.m.</item>
-        <item >4:30 p.m.</item>
-        <item />
+        <item >4:30 p.m.</item>  
     </string-array>
     <string-array name="dayArray">
+        <item >Any Day</item>
         <item >Monday</item>
         <item >Tuesday</item>
         <item >Wednesday</item>
