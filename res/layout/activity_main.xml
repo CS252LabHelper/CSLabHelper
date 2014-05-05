@@ -78,6 +78,15 @@
         android:layout_alignTop="@+id/timeText"
         android:entries="@array/timeArray"
         android:textSize="12sp" />
+    
+     <Spinner
+        android:id="@+id/timeSpinner2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/classSpinner"
+        android:layout_alignTop="@+id/timeView"
+        android:entries="@array/timeArray"
+        android:textSize="12sp" />
 
     <EditText
         android:id="@+id/dayText"
@@ -97,6 +106,15 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/timeSpinner"
         android:layout_below="@+id/timeSpinner"
+        android:entries="@array/dayArray"
+        android:textSize="12sp" />
+    
+      <Spinner
+        android:id="@+id/daySpinner2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/timeSpinner"
+        android:layout_below="@+id/timeSpinner2"
         android:entries="@array/dayArray"
         android:textSize="12sp" />
 
@@ -121,5 +139,32 @@
         android:text="@string/viewAll"
         android:onClick="viewAllClicked"
         android:textSize="12sp" />
+    
+    <Button
+        android:id="@+id/viewButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignRight="@+id/daySpinner2"
+        android:layout_below="@+id/daySpinner2"
+        android:text="View"
+        android:onClick="viewClicked"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/timeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/dayText"
+        android:layout_below="@+id/viewAllButon"
+        android:layout_marginTop="27dp"
+        android:text="Time:" />
+
+    <TextView
+        android:id="@+id/dayView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/timeView"
+        android:layout_below="@+id/timeSpinner2"
+        android:text="Day:" />
 
 </RelativeLayout>

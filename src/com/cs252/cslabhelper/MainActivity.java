@@ -106,6 +106,48 @@ public class MainActivity extends Activity {
 			startList(view);
 		}
 		
+	 	public void viewClicked(View view)
+	 	{
+	 		Spinner dayHelper = (Spinner)findViewById(R.id.daySpinner2);
+	 		String dayString = dayHelper.getSelectedItem().toString();
+	 		
+	 		Spinner timeHelper = (Spinner)findViewById(R.id.timeSpinner2);
+	 		String timeString = timeHelper.getSelectedItem().toString();
+	 		
+	 		int time = 0;
+			char temp = 0;
+			char real = 0;
+			String x;
+	 		
+			temp = timeString.charAt(1);
+			if(temp == ':')
+			{
+				real = timeString.charAt(0);
+				time = Character.getNumericValue(real);
+				temp = timeString.charAt(2);
+				time *= 100;
+				if(temp == '3')
+					time += 30; 
+			}
+			else
+			{
+				x = timeString.substring(0,2);
+				time = Integer.parseInt(x);
+				temp = timeString.charAt(3);
+				time*=100;
+				if(temp == '3')
+					time+=30;
+			}
+			
+			if(timeString.endsWith("p.m.") && time < 1200)
+			{
+				time += 1200;
+			}
+			
+	 		classes = datasource.viewClasses(dayString, time);
+	 		startList(view);
+	 	}
+	 	
 		public void viewAllClicked(View view)
 		{
 			TextView nameHelper = (TextView)findViewById(R.id.nameTextBox);
