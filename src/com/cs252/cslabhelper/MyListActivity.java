@@ -53,7 +53,7 @@ public class MyListActivity extends ListActivity {
 @Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		String item[] = (String[]) getListAdapter().getItem(position);
-		String message = "/add-" + item[1] + "-" + MainActivity.nameString + "-" + item[0] + "-";
+		String message = MainActivity.messagePrefix + item[1] + "-" + MainActivity.nameString + "-" + item[0] + "-";
 		new NetworkHandler().execute(message);
 		Intent res = new Intent(this, ResultScreen.class);
 		try {
